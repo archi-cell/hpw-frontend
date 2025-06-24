@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresno Location Map</title>
+    <link rel="stylesheet" href="map.css">
+    <!-- Leaflet CSS for the interactive map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+</head>
+<body>
+
+    <!-- Sidebar with location details -->
+    <div class="sidebar">
+        <h1>Fresno Location</h1>
+        <p><strong>📍 Address:</strong> 3855 N. Bryan Ave, Fresno, CA 93723, USA</p>
+        <p><strong>🕒 Open Hours:</strong> 24/7 Accessible</p>
+        <p><strong>🚗 Nearby:</strong> Parks, Shopping Malls, Restaurants</p>
+        <p><strong>📞 Contact:</strong> +1 559-123-4567</p>
+        <button class="direction-btn" onclick="openGoogleMaps()">📍 Get Directions</button>
+    </div>
+
+    <!-- Full-page Map -->
+    <div id="map"></div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="map.js"></script>
+
+</body>
+</html>

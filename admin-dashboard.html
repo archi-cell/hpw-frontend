@@ -1,0 +1,238 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+</head>
+<body>
+  <h2>Inquiries</h2>
+  <table border="1" id="inquiryTable">
+    <tr><th>Name</th><th>Email</th><th>Message</th><th>Date</th></tr>
+  </table>
+  <button onclick="logout()">Logout</button>
+
+  <script>
+    const token = localStorage.getItem('token');
+    if (!token) {
+      alert("You must log in first");
+      window.location.href = 'admin-login.html';
+    }
+
+    fetch('http://localhost:5000/api/inquires', {
+      headers: {
+        'Authorization': token
+      }
+    })
+    .then(res => res.json())
+    .then(data => {
+      const table = document.getElementById('inquiryTable');
+      data.forEach(i => {
+        const row = table.insertRow();
+        row.innerHTML = `<td>${i.name}</td><td>${i.email}</td><td>${i.message}</td><td>${new Date(i.createdAt).toLocaleString()}</td>`;
+      });
+    })
+    .catch(() => {
+      alert("Session expired. Please login again.");
+      window.location.href = 'admin-login.html';
+    });
+
+    function logout() {
+      localStorage.removeItem('token');
+      window.location.href = 'admin-login.html';
+    }
+  </script>
+</body>
+</html> -->
+
+
+
+<!-- Save as admin-dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard - Inquiries</title>
+  <style>
+    :root {
+      --primary: #1e2a38;
+      --accent: #354f6b;
+      --light-bg: #f4f7fa;
+      --white: #ffffff;
+      --text-dark: #2c3e50;
+      --text-light: #6c7a89;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+    }
+
+    header {
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 20px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px 40px 10px;
+      flex-wrap: wrap;
+    }
+
+    .dashboard-header h2 {
+      font-size: 24px;
+      color: var(--primary);
+      margin: 0;
+    }
+
+    .logout-btn {
+      padding: 10px 20px;
+      background-color: var(--primary);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+      transition: background 0.3s ease;
+    }
+
+    .logout-btn:hover {
+      background-color: var(--accent);
+    }
+
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      padding: 20px 40px;
+    }
+
+    .inquiry-card {
+      background-color: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+      padding: 20px;
+      transition: transform 0.2s ease;
+    }
+
+    .inquiry-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .inquiry-card h3 {
+      margin-top: 0;
+      font-size: 18px;
+      color: var(--primary);
+    }
+
+    .inquiry-details {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .inquiry-details strong {
+      color: var(--text-light);
+      font-weight: 600;
+    }
+
+    .event-style-tag {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      padding: 3px 10px;
+      font-size: 12px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>Admin Dashboard - HollandParkWest</header>
+
+  <div class="dashboard-header">
+    <h2>📥 Inquiries Dashboard</h2>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+
+  <div class="card-container" id="inquiryCards"></div>
+
+  <script>
+    const token = localStorage.getItem('token');
+    if (!token) {
+      alert("You must log in first");
+      window.location.href = 'admin-login.html';
+    }
+
+    fetch('http://localhost:5000/api/inquires', {
+      headers: {
+        'Authorization': token
+      }
+    })
+      .then(res => {
+        if (!res.ok) throw new Error('Unauthorized');
+        return res.json();
+      })
+      .then(data => {
+        const container = document.getElementById('inquiryCards');
+        data.forEach(i => {
+          const card = document.createElement('div');
+          card.classList.add('inquiry-card');
+
+          let addressHTML = '';
+          if (i.address) {
+            addressHTML = `
+              <p><strong>Address:</strong> ${i.address.street || ''}, ${i.address.city || ''}, ${i.address.state || ''} - ${i.address.postal || ''}</p>
+            `;
+          }
+
+          let timing = '';
+          if (i.eventStyle === 'drop-off') {
+            timing = `<p><strong>Drop-Off Time:</strong> ${i.dropOffTime || '-'}</p>`;
+          } else if (i.eventStyle === 'pick-up') {
+            timing = `<p><strong>Pick-Up Time:</strong> ${i.pickUpTime || '-'}</p>`;
+          } else if (i.eventStyle === 'on-premise' || i.eventStyle === 'full-service') {
+            timing = `<p><strong>Time:</strong> ${i.startTime || '-'} - ${i.endTime || '-'}</p>`;
+          }
+
+          card.innerHTML = `
+            <div class="event-style-tag">${i.eventStyle?.toUpperCase() || '-'}</div>
+            <h3>${i.firstName || ''} ${i.lastName || ''}</h3>
+            <div class="inquiry-details">
+              <p><strong>Email:</strong> ${i.email || '-'}</p>
+              <p><strong>Phone:</strong> ${i.phone || '-'}</p>
+              <p><strong>Company:</strong> ${i.company || '-'}</p>
+              <p><strong>Event Type:</strong> ${i.eventType || '-'}</p>
+              <p><strong>Event Date:</strong> ${i.eventDate || '-'}</p>
+              ${timing}
+              <p><strong>Guest Count:</strong> ${i.guestCount || '-'}</p>
+              ${addressHTML}
+              <p><strong>Heard From:</strong> ${i.referralSource || '-'}</p>
+              <p><strong>Additional Info:</strong> ${i.additionalInfo || '-'}</p>
+              <p><strong>Submitted:</strong> ${new Date(i.createdAt).toLocaleString()}</p>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+      })
+      .catch(() => {
+        alert("Session expired or unauthorized access. Please login again.");
+        window.location.href = 'admin-login.html';
+      });
+
+    function logout() {
+      localStorage.removeItem('token');
+      window.location.href = 'admin-login.html';
+    }
+  </script>
+</body>
+
+</html>

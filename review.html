@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventopia Reviews</title>
+    <link rel="stylesheet" href="review.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body with Dark Theme */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #1f1f1f;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .navbar .logo img {
+            height: 40px;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #bbbbbb;
+            transition: color 0.3s ease;
+        }
+
+        .navbar ul li a.active,
+        .navbar ul li a:hover {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /* Reviews Section */
+        .reviews {
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .reviews h1 {
+            font-size: 2.5rem;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .reviews p {
+            color: #cccccc;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Review Cards Container */
+        .review-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            padding: 0 1rem;
+        }
+
+        /* Individual Review Card - Dark Theme */
+        .review-card {
+            background-color: #1e1e1e;
+            color: #f0f0f0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .review-card h3 {
+            color: #ffffff;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .review-card p {
+            color: #cccccc;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        /* .review-card span {
+            font-size: 1.1rem;
+            color: #f5c518;
+            /* golden star color */
+        
+
+
+        /* Footer */
+        .footer {
+            background-color: #1f1f1f;
+            text-align: center;
+            padding: 1rem;
+            color: #999999;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="logo2.jpg" alt="Eventopia Logo">
+            <span>Holland Park West - Reviews</span>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="review.html" class="active">Reviews</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Reviews Section -->
+    <section class="reviews">
+        <h1>What Our Guests Say</h1>
+        <p>Read the experiences shared by our guests.</p>
+
+        <div class="review-container">
+            <!-- Existing Reviews -->
+            <div class="review-card">
+                <h3>DANIELLE. [Wedding Ceremony]</h3>
+                <p>"Everything was beautiful! I absolutely recommend HPW to anyone who wants an elegant, trendy & classy
+                    wedding venue!"</p>
+                <span>⭐⭐⭐⭐</span>
+            </div>
+            <div class="review-card">
+                <h3>LUKE B. [Wedding Reception]</h3>
+                <p>"It was nothing short of perfect. The food was excellent, the decor was beautiful, and the staff was
+                    responsive."</p>
+                <span>⭐⭐⭐⭐⭐</span>
+            </div>
+            <div class="review-card">
+                <h3>LUISA H. [Ceremony & Reception]</h3>
+                <p>"BEST VENUE EVER! My heart was so happy. It was absolutely GORGEOUS! Our day was absolutely perfect."
+                </p>
+                <span>⭐⭐⭐⭐⭐</span>
+            </div>
+            <div class="review-card">
+                <h3>Kayza Hebrard</h3>
+                <p>"Their prices are fair and the service is wonderful."</p>
+                <span>⭐⭐⭐⭐⭐</span>
+            </div>
+
+            <!-- Additional Reviews -->
+            <div class="review-card">
+                <h3>Emma R. [Corporate Event]</h3>
+                <p>"Seamless experience from planning to execution. Our team was impressed with everything."</p>
+                <span>⭐⭐⭐⭐⭐</span>
+            </div>
+            <div class="review-card">
+                <h3>Jason M. [Birthday Party]</h3>
+                <p>"Loved the ambiance and how easy everything was to organize. Highly recommended!"</p>
+                <span>⭐⭐⭐⭐</span>
+            </div>
+            <div class="review-card">
+                <h3>Sophia L. [Engagement Party]</h3>
+                <p>"The venue was romantic and magical. A dream come true."</p>
+                <span>⭐⭐⭐⭐⭐</span>
+            </div>
+            <div class="review-card">
+                <h3>Michael T. [Charity Gala]</h3>
+                <p>"Classy venue and supportive staff. The evening went better than expected."</p>
+                <span>⭐⭐⭐⭐</span>
+            </div>
+            <div class="review-card">
+                <h3>Priya S. [Baby Shower]</h3>
+                <p>"Super cozy yet elegant. Our guests loved it!"</p>
+                <span>⭐⭐⭐⭐⭐</span>
+            </div>
+            <div class="review-card">
+                <h3>Andrew D. [Wedding]</h3>
+                <p>"Exactly what we imagined. Great coordination by the Eventopia team."</p>
+                <span>⭐⭐⭐⭐⭐</span>
+            </div>
+            <div class="review-card">
+                <h3>Nora V. [Conference]</h3>
+                <p>"Professional setup and smooth logistics."</p>
+                <span>⭐⭐⭐⭐</span>
+            </div>
+            <div class="review-card">
+                <h3>Riya M. [Reception]</h3>
+                <p>"Decor, lighting, sound — all perfect. The night felt magical."</p>
+                <span>⭐⭐⭐⭐⭐</span>
+            </div>
+            <div class="review-card">
+                <h3>Jared P. [Graduation Party]</h3>
+                <p>"Spacious and vibrant. Perfect for celebrations!"</p>
+                <span>⭐⭐⭐⭐⭐</span>
+            </div>
+            <div class="review-card">
+                <h3>Linda K. [Wedding]</h3>
+                <p>"Impressed with every detail. Staff was incredible."</p>
+                <span>⭐⭐⭐⭐⭐</span>
+            </div>
+            <div class="review-card">
+                <h3>Trisha N. [Cultural Event]</h3>
+                <p>"Accommodated our cultural needs wonderfully. Very respectful staff."</p>
+                <span>⭐⭐⭐⭐</span>
+            </div>
+            <div class="review-card">
+                <h3>Oliver C. [Workshop]</h3>
+                <p>"Perfect facilities and environment for learning."</p>
+                <span>⭐⭐⭐⭐</span>
+            </div>
+            <div class="review-card">
+                <h3>Sandra B. [Family Reunion]</h3>
+                <p>"The kids and grandparents both had fun! A warm and lively venue."</p>
+                <span>⭐⭐⭐⭐⭐</span>
+            </div>
+            <div class="review-card">
+                <h3>Aditya G. [Networking Event]</h3>
+                <p>"Good vibes, easy check-in system, and supportive team."</p>
+                <span>⭐⭐⭐⭐</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Eventopia | Creating Everlasting Memories</p>
+    </footer>
+
+</body>
+
+</html>

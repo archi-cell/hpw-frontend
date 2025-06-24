@@ -1,0 +1,271 @@
+/* ========= Base Reset ========= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ========= Navbar ========= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-logo img {
+  width: 40px;
+  height: 40px;
+}
+
+.nav-logo span {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: white;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links li a {
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #f4c10f;
+}
+
+/* ========= Section Titles ========= */
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #111;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  color: #666;
+}
+
+/* ========= About Section ========= */
+.about {
+  padding: 4rem 2rem;
+  background-color: #f7f7f7;
+}
+
+.about-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-text {
+  flex: 1 1 45%;
+  background-color: #111;
+  color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.about-text h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #f4c10f;
+}
+
+.about-text p {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+.about-gallery {
+  flex: 1 1 45%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.about-gallery img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.about-gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* ========= Footer ========= */
+.footer {
+  background-color: #111;
+  padding: 3rem 2rem 1.5rem;
+  color: #ddd;
+}
+
+/* .footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.footer-about,
+.footer-links,
+.footer-contact {
+  flex: 1 1 220px;
+}
+
+.footer-about h4,
+.footer-links h4,
+.footer-contact h4 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #f4c10f;
+}
+
+.footer-about p {
+  font-size: 0.95rem;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+  font-size: 0.95rem;
+  color: #ddd;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #f4c10f;
+}
+
+.footer-contact p {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+.footer-contact i {
+  margin-right: 8px;
+  color: #f4c10f;
+}
+
+.footer-contact .socials a {
+  margin-right: 12px;
+  font-size: 1.2rem;
+  color: #ccc;
+  transition: color 0.3s;
+}
+
+.footer-contact .socials a:hover {
+  color: #f4c10f;
+} */
+
+.footer-bottom {
+  text-align: center;
+
+  font-size: 0.85rem;
+  color: #aaa;
+  border-top: 1px solid #333;
+  margin-top: 2rem;
+  background-color: #111;
+  padding: 1rem 1rem 1rem;
+  color: #ddd;
+}
+
+/* ========= Responsive ========= */
+@media (max-width: 768px) {
+  .about-content {
+    flex-direction: column;
+  }
+
+  .about-text,
+  .about-gallery {
+    flex: 1 1 100%;
+  }
+
+  .navbar {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .footer-about,
+  .footer-links,
+  .footer-contact {
+    flex: 1 1 100%;
+  }
+}
+
+.full-width-text {
+  max-width: 900px;
+  margin: 2rem auto;
+  background: #111;
+  color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.full-width-text h3 {
+  color: #f4c10f;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+}
+
+.full-width-text p {
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: #eee;
+}

@@ -1,0 +1,349 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+   
+    <form id="inquiryForm">
+        <input type="text" id="name" placeholder="Your Name" required />
+        <input type="email" id="email" placeholder="Your Email" required />
+        <textarea id="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="responseMessage"></p>
+
+    <script>
+        document.getElementById('inquiryForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            const response = await fetch('http://localhost:5000/api/inquiries', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name, email, message })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                document.getElementById('responseMessage').innerText = data.message;
+            } else {
+                document.getElementById('responseMessage').innerText = 'Submission failed.';
+            }
+        });
+    </script>
+
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Event Inquiry Form - Admin</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        form {
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            max-width: 700px;
+            width: 100%;
+        }
+
+        h2 {
+            text-align: center;
+            color: #1e2a38;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin: 12px 0 5px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #355c7d;
+            outline: none;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            margin: 15px 0;
+        }
+
+        .checkbox-group input {
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+
+        .checkbox-group label {
+            font-weight: normal;
+            margin: 0;
+            color: #555;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #1e2a38;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #2d4052;
+        }
+
+        #responseMessage {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- KEEP EVERYTHING ABOVE THE FORM THE SAME -->
+    <!-- REPLACE ONLY FROM <form> TO </script> WITH THIS UPDATED BLOCK -->
+
+    <form id="inquiryForm">
+        <h2>Event Inquiry Form</h2>
+
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" required>
+
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" required>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" required>
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" required>
+
+        <label for="company">Company</label>
+        <input type="text" id="company">
+
+        <div class="checkbox-group">
+            <input type="checkbox" id="privacyPolicy" required>
+            <label for="privacyPolicy">In order to submit your personal information, you must agree to and accept the
+                terms of Tripleseat's privacy policy.</label>
+        </div>
+
+        <label for="eventStyle">Select your desired event style</label>
+        <select id="eventStyle" required>
+            <option value="">Select</option>
+            <option value="on-premise">On-Premise Event</option>
+            <option value="drop-off">Drop-Off Catering</option>
+            <option value="pick-up">Pick-Up Catering</option>
+            <option value="full-service">Full-Service Catering</option>
+        </select>
+
+        <!-- On-Premise Event Section -->
+        <div class="event-section" id="on-premise-section">
+            <label for="eventType">Type of Event (e.g., Birthday Party or Business Dinner)</label>
+            <input type="text" id="eventType">
+
+            <label for="eventDate">Event Date</label>
+            <input type="date" id="eventDate" value="2025-04-05">
+
+            <label for="startTime">Start Time</label>
+            <input type="time" id="startTime" value="18:00">
+
+            <label for="endTime">End Time</label>
+            <input type="time" id="endTime" value="18:15">
+
+            <label for="guestCount">Number of People (Minimum of 50)</label>
+            <input type="number" id="guestCount" min="50">
+
+            <label for="additionalInfo">Is there any additional information you would like to add?</label>
+            <textarea id="additionalInfo" rows="4"></textarea>
+        </div>
+
+        <!-- Drop-Off Catering Section -->
+        <div class="event-section" id="drop-off-section" style="display: none;">
+            <label>Event Address</label>
+            <input type="text" placeholder="Street Address">
+            <input type="text" placeholder="City">
+            <input type="text" placeholder="State/Province">
+            <input type="text" placeholder="Postal Code">
+
+            <label for="additionalInfo">Delivery Instructions</label>
+            <textarea id="additionalInfo" rows="4"></textarea>
+
+            <label for="eventDate">Date</label>
+            <input type="date" id="eventDate" value="2025-04-05">
+
+            <label for="startTime">Drop-Off Time</label>
+            <input type="time" id="startTime" value="18:00">
+
+            <label for="guestCount">Number of People (Minimum of 50)</label>
+            <input type="number" id="guestCount" min="50">
+        </div>
+
+        <!-- Pick-Up Catering Section -->
+        <div class="event-section" id="pick-up-section" style="display: none;">
+            <label for="eventDate">Date</label>
+            <input type="date" id="eventDate" value="2025-04-05">
+
+            <label for="startTime">Pick-Up Time</label>
+            <input type="time" id="startTime" value="18:00">
+
+            <label for="guestCount">Number of People (Minimum of 50)</label>
+            <input type="number" id="guestCount" min="50">
+
+            <label for="additionalInfo">Is there any additional information you would like to add?</label>
+            <textarea id="additionalInfo" rows="4"></textarea>
+        </div>
+
+        <!-- Full-Service Catering Section -->
+        <div class="event-section" id="full-service-section" style="display: none;">
+            <label>Event Address</label>
+            <input type="text" placeholder="Street Address">
+            <input type="text" placeholder="City">
+            <input type="text" placeholder="State/Province">
+            <input type="text" placeholder="Postal Code">
+
+            <label for="additionalInfo">Delivery Instructions</label>
+            <textarea id="additionalInfo" rows="4"></textarea>
+
+            <label for="eventType">Type of Event (e.g., Birthday Party or Business Dinner)</label>
+            <input type="text" id="eventType">
+
+            <label for="eventDate">Event Date</label>
+            <input type="date" id="eventDate" value="2025-04-05">
+
+            <label for="startTime">Start Time</label>
+            <input type="time" id="startTime" value="18:00">
+
+            <label for="endTime">End Time</label>
+            <input type="time" id="endTime" value="18:15">
+
+            <label for="guestCount">Number of People (Minimum of 50)</label>
+            <input type="number" id="guestCount" min="50">
+        </div>
+
+        <label for="referral">How did you hear about us?</label>
+        <select id="referral">
+            <option value="">Select an option</option>
+            <option value="search">Search Engine</option>
+            <option value="social">Social Media</option>
+            <option value="friend">Friend/Referral</option>
+            <option value="advertisement">Advertisement</option>
+            <option value="other">Other</option>
+        </select>
+
+        <button type="submit">Submit Inquiry</button>
+        <p id="responseMessage"></p>
+    </form>
+
+    <script>
+        const eventStyle = document.getElementById('eventStyle');
+        const sections = {
+            'on-premise': document.getElementById('on-premise-section'),
+            'drop-off': document.getElementById('drop-off-section'),
+            'pick-up': document.getElementById('pick-up-section'),
+            'full-service': document.getElementById('full-service-section')
+        };
+
+        eventStyle.addEventListener('change', () => {
+            for (let key in sections) {
+                sections[key].style.display = 'none';
+            }
+            if (sections[eventStyle.value]) {
+                sections[eventStyle.value].style.display = 'block';
+            }
+        });
+
+        document.getElementById('inquiryForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const data = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                company: document.getElementById('company').value,
+                eventStyle: document.getElementById('eventStyle').value,
+                eventType: document.getElementById('eventType')?.value || '',
+                eventDate: document.getElementById('eventDate').value,
+                startTime: document.getElementById('startTime')?.value || '',
+                endTime: document.getElementById('endTime')?.value || '',
+                guestCount: parseInt(document.getElementById('guestCount')?.value || 0),
+                additionalInfo: document.getElementById('additionalInfo')?.value || '',
+                referralSource: document.getElementById('referral').value,
+            };
+
+            try {
+                const res = await fetch('http://localhost:5000/api/inquires', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (!res.ok) throw new Error('Failed to submit');
+
+                alert('Inquiry submitted successfully!');
+                document.getElementById('inquiryForm').reset();
+                for (let key in sections) {
+                    sections[key].style.display = 'none';
+                }
+            } catch (err) {
+                alert('An error occurred, please try again.');
+                console.error('Submission error:', err);
+            }
+        });
+    </script>
+</body>
+
+</html>

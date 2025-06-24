@@ -1,0 +1,389 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: 'Segoe UI', sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #111;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Navbar Logo + Text */
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.logo-img {
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    /* optional */
+}
+
+.logo-text {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+}
+
+.tagline {
+    font-size: 17px;
+    color: white;
+    margin-top: 4px;
+    
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #f39c12;
+}
+
+.social {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.9rem;
+}
+
+.social i:hover {
+    color: #f39c12;
+}
+
+/* Hamburger */
+.hamburger {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.hero-content {
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    background-color: #f39c12;
+    padding: 0.75rem 1.5rem;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background-color: #e67e22;
+}
+
+/* Color Variables */
+:root {
+    --bg-main: #ffffff;
+    --text-main: #1a1a1a;
+    --text-muted: #555555;
+    --accent: #f4c10f;
+    /* Rich yellow/gold */
+    --card-shadow: rgba(0, 0, 0, 0.1);
+    --hover-shadow: rgba(0, 0, 0, 0.2);
+}
+
+/* Section Titles */
+h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+/* === PROMISE SECTION === */
+.promise {
+    background-color: var(--bg-main);
+    padding: 4rem 2rem;
+    text-align: center;
+    color: var(--text-main);
+}
+
+.promise-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.promise-box {
+    background: #f9f9f9;
+    border-radius: 15px;
+    padding: 2rem;
+    width: 280px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 16px var(--card-shadow);
+}
+
+.promise-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px var(--hover-shadow);
+}
+
+.promise-box i {
+    font-size: 2.5rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.promise-box h3 {
+    color: var(--text-main);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.promise-box p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* === SERVICES SECTION === */
+.services {
+    background-color: var(--bg-main);
+    padding: 4rem 2rem;
+    text-align: center;
+    color: var(--text-main);
+}
+
+.service-container {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.service-box {
+    background: #f9f9f9;
+    border-radius: 15px;
+    padding: 2rem;
+    width: 500px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 16px var(--card-shadow);
+    text-align: center;
+}
+
+.service-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px var(--hover-shadow);
+}
+
+.service-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--accent);
+}
+
+/* Image styling inside service boxes */
+.service-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+/* Override h3 and paragraph in service section if needed */
+.service-box h3 {
+    font-size: 1.4rem;
+    color: var(--text-main);
+    margin: 0.5rem 0;
+}
+
+.service-box p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+
+
+
+/* Footer */
+footer {
+    background-color: #111;
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 3rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #111;
+        position: absolute;
+        top: 70px;
+        left: 0;
+    }
+
+    .nav-links.nav-active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .social {
+        display: none;
+    }
+}
+
+/* ... keep the previous styles ... */
+
+/* Navbar Left (Logo) */
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: white;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #111;
+    color: white;
+    padding: 3rem 2rem 1rem;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.footer-box {
+    flex: 1 1 220px;
+}
+
+.footer-box h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    border-bottom: 2px solid #f39c12;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.footer-box p,
+.footer-box a,
+.footer-box li {
+    color: #ccc;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    text-decoration: none;
+}
+
+.footer-box ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.footer-box a:hover {
+    color: #f39c12;
+}
+
+.footer-bottom {
+    text-align: center;
+    font-size: 0.85rem;
+    border-top: 1px solid #333;
+    padding-top: 1rem;
+    color: #999;
+}
+
+/* Responsive Fixes */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
